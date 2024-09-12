@@ -34,7 +34,7 @@ export async function getWeekPendingGoals() {
                     lte(goalCompletions.createdAt, lastDayOfWeek)
                 )
             )
-            .groupBy(goalCompletions.id)
+            .groupBy(goalCompletions.goalId)
     )
 
     const pendingGoals = db

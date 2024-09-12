@@ -5,9 +5,9 @@ import {
     validatorCompiler,
     type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { getWeekPendingGoals } from '../functions/get-week-pending-goals'
 import { createGoalCompletion } from '../functions/create-goal completion'
 import { createGoalRoute } from './routes/create-goal.route'
+import { getPendingGoalsRoute } from './routes/get-pending-goals.route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -15,6 +15,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
 app.register(createGoalRoute)
+app.register(getPendingGoalsRoute)
 
 const completionValidator = {
     schema: {
@@ -23,12 +24,6 @@ const completionValidator = {
         }),
     },
 }
-
-app.get('/pending-goals', async () => {
-    const { pendingGoals } = await getWeekPendingGoals()
-
-    return pendingGoals
-})
 
 app.post('/completions', completionValidator, async (request, response) => {
     try {

@@ -6,7 +6,8 @@
     "scripts": {
         "dev": "tsx watch --env-file .env src/http/server.ts",
         "seed": "tsx --env-file .env src/db/seed.ts",
-        "studio": "npx drizzle-kit studio"
+        "studio": "npx drizzle-kit studio",
+        "migrate": "npx drizzle-kit migrate"
     },
     "author": "Diorgenes Morais",
     "license": "ISC",

@@ -11,7 +11,7 @@ npx drizzle-kit generate
 fazer a migração para o banco
 
 ```bash
-npx drissle-kit migrate
+npx drizzle-kit migrate
 ```
 
 para verificar o banco com o drizzle studio
